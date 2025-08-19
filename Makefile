@@ -1,4 +1,4 @@
-OBJS=bin/objs/Assignment.o
+OBJS=bin/objs/AssignmentGroup.o bin/objs/Class.o
  
 CC=g++
  
@@ -11,8 +11,11 @@ LFLAGS=-Wall ${DEBUG}
 grade_keeper: ${OBJS} 
 	${CC} ${LFLAGS} ${OBJS} ./src/main.cpp -o ./bin/grade_keeper
 
-bin/objs/Assignment.o: include/Assignment.h src/Assignment.cpp 
-	${CC} ${CFLAGS} src/Assignment.cpp -o bin/objs/Assignment.o
+bin/objs/AssignmentGroup.o: include/AssignmentGroup.h src/AssignmentGroup.cpp 
+	${CC} ${CFLAGS} src/AssignmentGroup.cpp -o bin/objs/AssignmentGroup.o
+
+bin/objs/Class.o: include/Class.h src/Class.cpp 
+	${CC} ${CFLAGS} src/Class.cpp -o bin/objs/Class.o
 
 clean:
 	rm bin/grade_keeper bin/objs/*.o

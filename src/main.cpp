@@ -1,69 +1,38 @@
-#include "../include/Assignment.h"
+#include "../include/AssignmentGroup.h"
+#include "../include/Class.h"
+#include <iostream>
 
 int main() {
-	std::string name;
+	std::string name = "Exam";
+	std::string name1 = "Exam 1";
+	std::string name2 = "Exaxm 2";
 
-	std::cout << "Welcome to Grade Keeper!" << std::endl;
-	std::cout << "Name your assignment type: ";
-	std::getline(std::cin, name);
+	std::string name3 = "Homework";
+	std::string name4 = "Homework 2";
+	std::string name5 = "Homework 3";
 
-	std::string weightStr;
-	std::cout << "Give your assignment type a weight (in percent): ";
-	std::getline(std::cin, weightStr);
+	std::string name6 = "Math";
 	
-	float weight = std::stof(weightStr);
+	Class math(name6);
 
-	std::cout << "Now that's all set up, here are your options:\n";
+	AssignmentGroup assignmentGroup(name, .500);
+	AssignmentGroup homework(name3, .500);
 
-	AssignmentType assignmentType(name, weight);
+	math.createAssignmentGroup(assignmentGroup);
+	math.createAssignmentGroup(homework);
 
-	while(true) {
-		std::string choiceStr;
-		
-		std::cout << "1. Add an assignment\n";
-		std::cout << "2. Remove an assignment\n";
-		std::cout << "3. View grade for assignment type\n";
-		std::cout << "4. Get assignment list\n";
-		std::cout << "0. Exit\n";
+	Assignment assignment = {100.00, 100.00, name1};
+	Assignment assignment1 = {50.00, 100.00, name2};
 
-		std::getline(std::cin, choiceStr);
-		int choice = std::stoi(choiceStr);
+	Assignment assignment2 = {100.00, 100.00, name4};
+	Assignment assignment3 = {50.00, 100.00, name5};
 
-		if(choice == 0) {
-			std::cout << "Thanks for trying!\n";
-			break;
-		} else if(choice == 1) {
-			std::string name;
-			std::cout << "Give your assignment a name: ";
-			std::getline(std::cin, name);
+	math.createAssignment(name, assignment);
+	math.createAssignment(name, assignment1);
+	math.createAssignment(name3, assignment2);
+	math.createAssignment(name3, assignment3);
 
-			std::string pointsEarnedStr;
-			std::string pointsMaxStr;
-
-			std::cout << "How many points did you earn? ";
-			std::getline(std::cin, pointsEarnedStr);
-
-			std::cout << "How many points was the assignment worth? ";
-			std::getline(std::cin, pointsMaxStr);
-
-			float pointsEarned = std::stof(pointsEarnedStr);
-			float pointsMax = std::stof(pointsMaxStr);
-
-			Assignment assignment = {name, pointsEarned, pointsMax};
-			assignmentType.addAssignment(assignment);
-		} else if(choice == 2) {
-			std::string name;
-			std::cout << "Which assignment do you want to remove? ";
-			std::getline(std::cin, name);
-
-			assignmentType.removeAssignment(name);
-		} else if(choice == 3) {
-			std::cout << "Your grade is " << assignmentType.getCumGrade() * 100 << "%" << std::endl;  	
-		} else if(choice == 4) {
-			std::cout << assignmentType.getAssignmentList();
-			std::cout << std::endl;
-		}
-	}
+	std::cout << math.getGrade() << std::endl; 
 
 	return 0;
 }
