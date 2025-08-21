@@ -15,14 +15,15 @@ class Class {
 	Class(std::string& name);
 	//CD for AssignmentGroups
 	void createAssignmentGroup(AssignmentGroup& assignmentGroup);
-	void deleteAssignmentGroup(std::string& name);
+	void removeAssignmentGroup(std::string& name);
 	
 	//CD for Assignments
 	void createAssignment(std::string& group, Assignment& assignment);
-	void deleteAssignment(std::string& group, std::string& name);
+	void removeAssignment(std::string& group, std::string& name);
 
 	//getters and setters
 	std::string& getName();
+	std::string getAssignmentGroups();
 	float getGrade();
 };
 

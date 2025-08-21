@@ -34,7 +34,7 @@ void Class::createAssignmentGroup(AssignmentGroup& assignmentGroup) {
 
 }
 
-void Class::deleteAssignmentGroup(std::string& name) {
+void Class::removeAssignmentGroup(std::string& name) {
 	for(int i = 0; i < (int)m_assignmentGroups.size(); i++) {
 		if(m_assignmentGroups.at(i).getName() == name) {
 			m_assignmentGroups.erase(m_assignmentGroups.begin() + i);
@@ -51,7 +51,7 @@ void Class::createAssignment(std::string& group, Assignment& assignment) {
 	}
 }
 
-void Class::deleteAssignment(std::string& group, std::string& name) {
+void Class::removeAssignment(std::string& group, std::string& name) {
 	for(int i = 0; i < (int)m_assignmentGroups.size(); i++) {
 		if(m_assignmentGroups.at(i).getName() == group) {
 			m_assignmentGroups.at(i).deleteAssignment(name);
@@ -66,4 +66,13 @@ float Class::getGrade() {
 
 std::string& Class::getName() {
 	return m_name;
+}
+
+std::string Class::getAssignmentGroups() {
+	std::string groups;
+	for(int i = 0; i < (int)m_assignmentGroups.size(); i++) {
+		groups += "Name: " + m_assignmentGroups.at(i).getName() + "\nGrade: " + std::to_string(m_assignmentGroups.at(i).getWeightedGrade()) + '\n';
+	}
+
+	return groups;
 }

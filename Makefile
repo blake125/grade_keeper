@@ -1,4 +1,4 @@
-OBJS=bin/objs/AssignmentGroup.o bin/objs/Class.o
+OBJS=bin/objs/AssignmentGroup.o bin/objs/Class.o bin/objs/ClassManager.o
  
 CC=g++
  
@@ -16,6 +16,9 @@ bin/objs/AssignmentGroup.o: include/AssignmentGroup.h src/AssignmentGroup.cpp
 
 bin/objs/Class.o: include/Class.h src/Class.cpp 
 	${CC} ${CFLAGS} src/Class.cpp -o bin/objs/Class.o
+
+bin/objs/ClassManager.o: include/Class.h src/Class.cpp 
+	${CC} ${CFLAGS} src/ClassManager.cpp -o bin/objs/ClassManager.o
 
 clean:
 	rm bin/grade_keeper bin/objs/*.o
