@@ -13,6 +13,7 @@ class ClassManager {
 	//CD for classes
 	void createClass(Class& newClass);
 	void removeClass(std::string& name);
+	void removeClass(int index);
 	//CD for AssignmentGroups
 	void createAssignmentGroup(std::string& className, AssignmentGroup& assignmentGroup);
 	void removeAssignmentGroup(std::string& className, std::string& assignmentGroupName);
@@ -21,6 +22,9 @@ class ClassManager {
 	void removeAssignment(std::string& className, std::string& assignmentGroupName, std::string assignmentName);
 
 	std::string getClassInfo(std::string& className);
+	std::string getClassInfo(Class&);
+	std::string getAllClassInfo();
+	std::string getClassList();
 
 };
 

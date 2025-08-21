@@ -1,4 +1,4 @@
-OBJS=bin/objs/AssignmentGroup.o bin/objs/Class.o bin/objs/ClassManager.o
+OBJS=bin/objs/AssignmentGroup.o bin/objs/Class.o bin/objs/ClassManager.o bin/objs/GradeKeeper.o
  
 CC=g++
  
@@ -20,8 +20,14 @@ bin/objs/Class.o: include/Class.h src/Class.cpp
 bin/objs/ClassManager.o: include/Class.h src/Class.cpp 
 	${CC} ${CFLAGS} src/ClassManager.cpp -o bin/objs/ClassManager.o
 
+bin/objs/GradeKeeper.o: include/ClassManager.h src/ClassManager.cpp 
+	${CC} ${CFLAGS} src/GradeKeeper.cpp -o bin/objs/GradeKeeper.o
+
 clean:
 	rm bin/grade_keeper bin/objs/*.o
 
 remake:
 	make clean; make
+
+test:
+	make clean; make; clear; ./bin/grade_keeper

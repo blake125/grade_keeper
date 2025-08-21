@@ -42,6 +42,13 @@ void ClassManager::removeClass(std::string& name) {
 
 }
 
+void ClassManager::removeClass(int index) {
+	if(index < 0 || index > (int)m_classes.size() - 1) {
+		throw std::out_of_range("Index not in range!");
+	}
+
+	m_classes.erase(m_classes.begin() + index);
+}
 //CD for AssignmentGroups
 void ClassManager::createAssignmentGroup(std::string& className, AssignmentGroup& assignmentGroup) {
 	Class* myClass = getClass(className);
@@ -68,6 +75,45 @@ std::string ClassManager::getClassInfo(std::string& className) {
 	std::string classInfo;
 	Class* myClass = getClass(className);
 	
-	classInfo += "Class Name: " + myClass->getName() + "\nGrade: " + std::to_string(myClass->getGrade()) += "\nGroups: \n" + myClass->getAssignmentGroups();
+	classInfo += "Class Name: " + myClass->getName() + "\nGrade: " + std::to_string(myClass->getGrade()) += "\n\nAdvanced Overview: \n" + myClass->getAssignmentGroups();
 	return classInfo;
 }
+
+std::string ClassManager::getClassInfo(Class& myClass) {
+	std::string classInfo;
+	
+	classInfo += "Class Name: " + myClass.getName() + "\nGrade: " + std::to_string(myClass.getGrade()) /*+= "\n\nAdvanced Overview: \n" + myClass.getAssignmentGroups()*/;
+	return classInfo;
+}
+
+std::string ClassManager::getAllClassInfo() {
+	if(m_classes.size() == 0) {
+		return "Class list is empty!\n";
+	}
+
+	std::string allClassInfo;
+
+	int i;
+	for(i = 0; i < (int)m_classes.size() - 1; i++) {
+		allClassInfo += getClassInfo(m_classes.at(i)) + "\n\n";	
+	}
+
+	allClassInfo += getClassInfo(m_classes.at(i)) + '\n';	
+
+	return allClassInfo;
+}
+
+std::string ClassManager::getClassList() {
+	if(m_classes.size() == 0) {
+		return "Class list is empty!\n";
+	}
+
+	std::string classList;
+
+	int i;
+	for(i = 0; i < (int)m_classes.size(); i++) {
+		classList += std::to_string(i + 1) + ": " + m_classes.at(i).getName() + "\n";	
+	}
+
+	return classList;
+};

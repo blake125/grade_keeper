@@ -6,6 +6,11 @@ Keeps track of total class grades by keeping track of assignments/exams. Inspire
 
 ![Grade Calculation Disabled](/assets/calcdisabled.png)
 
+## Current features:
+
+- Interactive command line
+- Adding/removing classes
+
 ## Technologies used: 
 
 - Language: C++
@@ -15,9 +20,8 @@ Keeps track of total class grades by keeping track of assignments/exams. Inspire
 
 ## Future features: 
 
-- Interactive command line
-- Adding/removing classes
-- Adding/removing assignments
+- Editing classes
+- Adding/removing/editing assignments
 - Persistent storage
 
 ## How to install/run (coming soon): 
